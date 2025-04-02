@@ -17,7 +17,14 @@ int main() {
 
   glfwMakeContextCurrent(window);
   
+  while(!glfwWindowShouldClose(window)) {
+    glClear(GL_COLOR_BUFFER_BIT);
 
+    // Here you would add your rendering code
+
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+  }
 
   glfwDestroyWindow(window);
   glfwTerminate();

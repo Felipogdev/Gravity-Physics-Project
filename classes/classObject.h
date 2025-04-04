@@ -10,7 +10,6 @@ using namespace std;
 
 class Object {
 private:
-    string name;
     double mass; // KG
     double radius; // M
     array<double, 3> position; // {x, y, z}
@@ -19,10 +18,9 @@ private:
     array<float, 4> color; // {R, G, B, A}
 
 public:
-    Object(string name, double mass, double radius, array<double, 3> position, array<double, 2> velocity, array<double, 2> acceleration, array<float, 4> color);
+    Object(double mass, double radius, array<double, 3> position, array<double, 2> velocity, array<double, 2> acceleration, array<float, 4> color);
 
     // Getters
-    string getName() const;
     double getMass() const;
     double getRadius() const;
     array<double, 3> getPosition() const;
@@ -31,7 +29,6 @@ public:
     array<float, 4> getColor() const;
 
     // Setters
-    void setName(string name);
     void setMass(double mass);
     void setRadius(double radius);
     void setPosition(array<double, 3> position);

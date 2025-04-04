@@ -3,11 +3,10 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 
-Object::Object(string name, double mass, double radius, array<double, 3> position, array<double, 2> velocity, array<double, 2> acceleration, array<float, 4> color)
-    : name(name), mass(mass), radius(radius), position(position), velocity(velocity), acceleration(acceleration), color(color) {}
+Object::Object(double mass, double radius, array<double, 3> position, array<double, 2> velocity, array<double, 2> acceleration, array<float, 4> color)
+    : mass(mass), radius(radius), position(position), velocity(velocity), acceleration(acceleration), color(color) {}
 
 // Getters
-string Object::getName() const { return name; }
 double Object::getMass() const { return mass; }
 double Object::getRadius() const { return radius; }
 array<double, 3> Object::getPosition() const { return position; }
@@ -16,7 +15,6 @@ array<double, 2> Object::getAcceleration() const { return acceleration; }
 array<float, 4> Object::getColor() const { return color; }
 
 // Setters
-void Object::setName(string name) { this->name = name; }
 void Object::setMass(double mass) { this->mass = mass; }
 void Object::setRadius(double radius) { this->radius = radius; }
 void Object::setPosition(array<double, 3> position) { this->position = position; }

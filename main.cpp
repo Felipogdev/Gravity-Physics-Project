@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <cmath>
 #include <array>
-#include "classObject.h"
+#include "classes/classObject.h"
 
 
 const int windowWidth = 1000;
@@ -34,16 +34,18 @@ int main() {
     //Matrix Setup
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-1, 1, -1, 1, -1, 1);
+    glOrtho(-2, 2, -2, 2, -2, 2);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
-    Object earth("Earth", 5.972e24, 0.1, {0.0, 0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0f, 0.0f, 1.0f, 1.0f});
-
+    
+    // Mass, Radius, Position, Velocity, Acceleration, Color
+    Object earth(5.972e24, 0.4f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}, {0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f});
+    Object moon(7.34767309e22, 0.1f, {0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f});
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         earth.draw();
+        moon.draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

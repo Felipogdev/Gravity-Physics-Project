@@ -12,10 +12,11 @@ using namespace std;
 int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    Window window ("Gravity Simulator", windowWidth, windowHeight);
+    Window window ("Gravity Simulator", windowWidth, windowHeight, "");
 
     window.createWindow();
 
-    glfwTerminate();
+
+     glfwTerminate();
     return 0;
 }

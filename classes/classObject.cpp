@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <array>
+#include <string>
 
 Object::Object(std::string name, double mass, double radius, std::array<double, 3> position, std::array<double, 3> velocity, std::array<double, 3> acceleration, std::array<float, 4> color, std::string texturePath)
     : name(name), mass(mass), radius(radius), position(position), velocity(velocity), acceleration(acceleration), color(color), texturePath(texturePath) {}

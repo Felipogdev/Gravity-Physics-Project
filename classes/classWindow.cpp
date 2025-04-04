@@ -2,18 +2,22 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "classObject.h"
+#include <string>
 
-Window::Window(std::string name, int width, int height) : name(name), width(width), height(height) {}
 
+Window::Window(std::string name, int width, int height, std::string backgroundPath)
+    : name(name), width(width), height(height), backgroundPath(backgroundPath) {}
 // Getters
 std::string Window::getName() const { return name; }
 int Window::getWidth() const { return width; }
 int Window::getHeight() const { return height; }
+std::string Window::getBackgroundPath() const { return backgroundPath; }
 
 // Setters
 void Window::setName(const std::string title) { this->name = title; }
 void Window::setWidth(int width) { this->width = width; }
 void Window::setHeight(int height) { this->height = height; }
+void Window::setBackgroundPath(const std::string backgroundPath) { this->backgroundPath = backgroundPath; }
 
 void Window::createWindow() {
     if (!glfwInit()) {
@@ -38,6 +42,7 @@ void Window::createWindow() {
     glOrtho(-1, 1, -1, 1, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
    Object earth("earth", 5.972e24, 0.4f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f}, "");
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

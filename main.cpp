@@ -39,8 +39,8 @@ int main() {
     glLoadIdentity();
     
     // Mass, Radius, Position, Velocity, Acceleration, Color
-    Object earth(5.972e24, 0.4f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}, {0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f});
-    Object moon(7.34767309e22, 0.1f, {0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f});
+    Object earth("Earth", 5.972e24, 0.4f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}, {0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f});
+    Object moon("Moon", 7.34767309e22, 0.1f, {0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f});
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 

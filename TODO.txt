@@ -1,0 +1,9 @@
+3/4
+Fazer a câmera
+Fazer a movimentação da câmera
+Fazer o grid
+Método: para atualizar a posição dos objetos dinamicamente
+Método: para checar se o objeto está dentro do limite da tela
+Método: para aplicar a força gravitacional de cada objeto
+
+

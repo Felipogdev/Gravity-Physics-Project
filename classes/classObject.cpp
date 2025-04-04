@@ -4,26 +4,28 @@
 #include <vector>
 #include <array>
 
-Object::Object(std::string name, double mass, double radius, std::array<double, 3> position, std::array<double, 2> velocity, std::array<double, 2> acceleration, std::array<float, 4> color)
-    : name(name), mass(mass), radius(radius), position(position), velocity(velocity), acceleration(acceleration), color(color) {}
+Object::Object(std::string name, double mass, double radius, std::array<double, 3> position, std::array<double, 3> velocity, std::array<double, 3> acceleration, std::array<float, 4> color, std::string texturePath)
+    : name(name), mass(mass), radius(radius), position(position), velocity(velocity), acceleration(acceleration), color(color), texturePath(texturePath) {}
 
 // Getters
 std::string Object::getName() const { return name; }
 double Object::getMass() const { return mass; }
 double Object::getRadius() const { return radius; }
 std::array<double, 3> Object::getPosition() const { return position; }
-std::array<double, 2> Object::getVelocity() const { return velocity; }
-std::array<double, 2> Object::getAcceleration() const { return acceleration; }
+std::array<double, 3> Object::getVelocity() const { return velocity; }
+std::array<double, 3> Object::getAcceleration() const { return acceleration; }
 std::array<float, 4> Object::getColor() const { return color; }
+std::string Object::getTexturePath() const { return texturePath; }
 
 // Setters
 void Object::setName(const std::string& name) { this->name = name; }
 void Object::setMass(double mass) { this->mass = mass; }
 void Object::setRadius(double radius) { this->radius = radius; }
 void Object::setPosition(std::array<double, 3> position) { this->position = position; }
-void Object::setVelocity(std::array<double, 2> velocity) { this->velocity = velocity; }
-void Object::setAcceleration(std::array<double, 2> acceleration) { this->acceleration = acceleration; }
+void Object::setVelocity(std::array<double, 3> velocity) { this->velocity = velocity; }
+void Object::setAcceleration(std::array<double, 3> acceleration) { this->acceleration = acceleration; }
 void Object::setColor(std::array<float, 4> color) { this->color = color; }
+void Object::setTexturePath(const std::string& texturePath) { this->texturePath = texturePath; }
 
 void Object::generateSphere(std::vector<float>& vertices, int resolutionTheta, int resolutionPhi) {
     for (int i = 0; i <= resolutionPhi; i++) {

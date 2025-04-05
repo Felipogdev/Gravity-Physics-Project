@@ -1,4 +1,4 @@
-#include "classObject.h"
+#include "classObject.hpp"
 #include <cmath>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -78,3 +78,4 @@ void Object::draw(int resolutionTheta, int resolutionPhi) {
     }
     glEnd();
 }
+

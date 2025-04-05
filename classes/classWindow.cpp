@@ -1,7 +1,7 @@
-#include "window.h"
+#include "window.hpp"
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "classObject.h"
+#include "classObject.hpp"
 #include <string>
 
 

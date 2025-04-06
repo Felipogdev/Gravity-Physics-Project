@@ -18,12 +18,12 @@ int Window::getHeight() const { return height; }
 std::string Window::getBackgroundPath() const { return backgroundPath; }
 
 // Setters
-void Window::setName(const std::string title) { this->name = title; }
+void Window::setName( std::string title) { this->name = title; }
 void Window::setWidth(int width) { this->width = width; }
 void Window::setHeight(int height) { this->height = height; }
-void Window::setBackgroundPath(const std::string backgroundPath) { this->backgroundPath = backgroundPath; }
+void Window::setBackgroundPath( std::string backgroundPath) { this->backgroundPath = backgroundPath; }
 
-void Window::createWindow(const std::vector<Object>& objects) {
+void Window::createWindow( std::vector<Object>& objects) {
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return;
@@ -43,7 +43,7 @@ void Window::createWindow(const std::vector<Object>& objects) {
     // Matrix Setup
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-1, 1, -1, 1, -1, 1);
+    glOrtho(-3, 3, -3, 3, -3, 3);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
@@ -55,7 +55,13 @@ void Window::createWindow(const std::vector<Object>& objects) {
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        for(const auto& object : objects) {
+        for( auto& object : objects) {
+          auto position = object.getPosition();
+          position[0] += 0.01;
+          position[1] += 0.01;
+          position[2] += 0.01;
+          object.setPosition(position);
+
             object.draw();
         }
 

@@ -1,11 +1,12 @@
 #include <vector>
-#include "window.hpp"
 #include <GLFW/glfw3.h>
 #include <GL/glu.h>
 #include <iostream>
-#include "classObject.hpp"
 #include <string>
 #include <vector>
+#include "window.hpp"
+#include "classPhysics.hpp"
+#include "classObject.hpp"
 
 
 
@@ -54,8 +55,7 @@ void Window::createWindow( std::vector<Object>& objects) {
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        for( auto& object : objects) {
-
+        for(auto& object : objects) {
             object.draw();
         }
 

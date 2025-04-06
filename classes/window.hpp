@@ -27,8 +27,7 @@ public:
   void setHeight(int height);
   void setBackgroundPath(const std::string backgroundPath);
 
-  void createWindow();
-  void renderObjects(const std::vector<Object>& objects);
+  void createWindow(const std::vector<Object>& objects);
 
 
 };

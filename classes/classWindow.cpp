@@ -4,6 +4,9 @@
 #include <iostream>
 #include "classObject.hpp"
 #include <string>
+#include <vector>
+
+
 
 
 Window::Window(std::string name, int width, int height, std::string backgroundPath)
@@ -20,7 +23,7 @@ void Window::setWidth(int width) { this->width = width; }
 void Window::setHeight(int height) { this->height = height; }
 void Window::setBackgroundPath(const std::string backgroundPath) { this->backgroundPath = backgroundPath; }
 
-void Window::createWindow() {
+void Window::createWindow(const std::vector<Object>& objects) {
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return;
@@ -44,10 +47,19 @@ void Window::createWindow() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    //std::vector<Object> objects;
+    //objects.push_back(Object("Earth", 5.972e24, 0.1f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f}, ""));
+    //objects.push_back(Object("Mars", 5.972e24, 0.1f, {0.5f, 0.5f, 0.5f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f}, ""));
+
+
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        for(const auto& object : objects) {
+            object.draw();
+        }
 
+        //this->renderObjects(objects);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -56,10 +68,4 @@ void Window::createWindow() {
     glfwTerminate();
 }
 
-void Window::renderObjects(const std::vector<Object>& objects) {
-  for(const auto& object : objects) {
-    object.draw();
-
-  }
-}
 

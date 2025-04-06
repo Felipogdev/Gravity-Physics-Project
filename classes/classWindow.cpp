@@ -1,6 +1,7 @@
 #include <vector>
 #include "window.hpp"
 #include <GLFW/glfw3.h>
+#include <GL/glu.h>
 #include <iostream>
 #include "classObject.hpp"
 #include <string>
@@ -43,13 +44,11 @@ void Window::createWindow( std::vector<Object>& objects) {
     // Matrix Setup
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-3, 3, -3, 3, -3, 3);
+    gluPerspective(45.0f, (float)this->width / (float)this->height, 0.1f, 100.0f);
+    glTranslatef(0.0f, 0.0f, -5.0f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    //std::vector<Object> objects;
-    //objects.push_back(Object("Earth", 5.972e24, 0.1f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f}, ""));
-    //objects.push_back(Object("Mars", 5.972e24, 0.1f, {0.5f, 0.5f, 0.5f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f}, ""));
 
 
     while (!glfwWindowShouldClose(window)) {
@@ -60,7 +59,6 @@ void Window::createWindow( std::vector<Object>& objects) {
             object.draw();
         }
 
-        //this->renderObjects(objects);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

@@ -41,8 +41,8 @@ public:
     void setTexturePath(const std::string& texturePath);
 
     // Methods
-    void generateSphere(std::vector<float>& vertices, int resolutionTheta, int resolutionPhi);
-    void draw(int resolutionTheta = 100, int resolutionPhi = 100);
+    void generateSphere(std::vector<float>& vertices, int resolutionTheta, int resolutionPhi) const;
+    void draw(int resolutionTheta = 100, int resolutionPhi = 100) const;
 };
 
 #endif

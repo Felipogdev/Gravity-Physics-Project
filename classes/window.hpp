@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "classObject.hpp"
+#include <vector>
 #include <string>
 
 class Window {
@@ -25,7 +27,7 @@ public:
   void setHeight(int height);
   void setBackgroundPath(const std::string backgroundPath);
 
-  void createWindow();
+  void createWindow(const std::vector<Object>& objects);
 
 
 };

@@ -56,11 +56,6 @@ void Window::createWindow( std::vector<Object>& objects) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         for( auto& object : objects) {
-          auto position = object.getPosition();
-          position[0] += 0.01;
-          position[1] += 0.01;
-          position[2] += 0.01;
-          object.setPosition(position);
 
             object.draw();
         }

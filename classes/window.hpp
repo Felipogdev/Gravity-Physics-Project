@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "classObject.hpp"
+#include <vector>
 #include <string>
 
 class Window {
@@ -26,6 +28,7 @@ public:
   void setBackgroundPath(const std::string backgroundPath);
 
   void createWindow();
+  void renderObjects(const std::vector<Object>& objects);
 
 
 };

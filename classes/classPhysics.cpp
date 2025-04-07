@@ -3,6 +3,7 @@
 #include <math.h>
 #include <array>
 #include <vector>
+#include <iostream>
 
 Physics::Physics(double gravityConstant, double deltaTime) 
   : gravityConstant(gravityConstant), deltaTime(deltaTime){}
@@ -144,6 +145,7 @@ void Physics::simulate(std::vector<Object>& objects) {
     for (size_t i = 0; i < objects.size(); ++i) {
         for (size_t j = i + 1; j < objects.size(); ++j) {
             if (checkCollision(objects[i], objects[j])) {
+              std::cout << "Collision detected between " << objects[i].getName() << " and " << objects[j].getName() << std::endl;
                 resolveCollision(objects[i], objects[j]);
             }
         }

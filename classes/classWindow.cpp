@@ -8,9 +8,7 @@
 #include "classPhysics.hpp"
 #include "classObject.hpp"
 
-Physics physics(6.67430e-11, 0.016);
-
-
+Physics physics(6.67430e-11, 1e-10);
 
 Window::Window(std::string name, int width, int height, std::string backgroundPath)
     : name(name), width(width), height(height), backgroundPath(backgroundPath) {}
@@ -46,6 +44,7 @@ void Window::createWindow( std::vector<Object>& objects) {
     // Matrix Setup
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    //fovY, aspect, zNear, zFar
     gluPerspective(100.0f, (float)this->width / (float)this->height, 0.1f, 100.0f);
     glTranslatef(0.0f, 0.0f, -5.0f);
     glMatrixMode(GL_MODELVIEW);

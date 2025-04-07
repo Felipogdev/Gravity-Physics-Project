@@ -8,6 +8,7 @@
 #include "classPhysics.hpp"
 #include "classObject.hpp"
 
+Physics physics(6.67430e-11, 0.016);
 
 
 
@@ -45,7 +46,7 @@ void Window::createWindow( std::vector<Object>& objects) {
     // Matrix Setup
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0f, (float)this->width / (float)this->height, 0.1f, 100.0f);
+    gluPerspective(100.0f, (float)this->width / (float)this->height, 0.1f, 100.0f);
     glTranslatef(0.0f, 0.0f, -5.0f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -54,10 +55,12 @@ void Window::createWindow( std::vector<Object>& objects) {
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        physics.simulate(objects);
 
         for(auto& object : objects) {
             object.draw();
         }
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();

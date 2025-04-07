@@ -19,9 +19,12 @@ class Physics {
   void setGravityConstant(double gravityConstant);
   void setDeltaTime(double deltaTime);
 
-  void applyGravity(Object& object);
   void update(Object& object);
   bool checkCollision(Object& object1, Object& object2);
+  void resolveCollision(Object& object1, Object& object2);
+  void applyGravity(Object& object1, Object& object2);
+  void simulate(std::vector<Object>& objects);
+  void keepObjectInBounds(Object& object);
 
 };
 

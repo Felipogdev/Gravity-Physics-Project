@@ -8,7 +8,7 @@
 #include "classPhysics.hpp"
 #include "classObject.hpp"
 
-Physics physics(6.67430e-11, 1e-10);
+Physics physics(6.67430e-11, 7e-10);
 
 Window::Window(std::string name, int width, int height, std::string backgroundPath)
     : name(name), width(width), height(height), backgroundPath(backgroundPath) {}

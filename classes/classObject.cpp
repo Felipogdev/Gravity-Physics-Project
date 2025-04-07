@@ -1,4 +1,4 @@
-#include "classObject.h"
+#include "classObject.hpp"
 #include <cmath>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -28,7 +28,7 @@ void Object::setAcceleration(std::array<double, 3> acceleration) { this->acceler
 void Object::setColor(std::array<float, 4> color) { this->color = color; }
 void Object::setTexturePath(const std::string& texturePath) { this->texturePath = texturePath; }
 
-void Object::generateSphere(std::vector<float>& vertices, int resolutionTheta, int resolutionPhi) {
+void Object::generateSphere(std::vector<float>& vertices, int resolutionTheta, int resolutionPhi) const {
     for (int i = 0; i <= resolutionPhi; i++) {
         float phi = M_PI * float(i) / float(resolutionPhi); // POLAR (0-PI)
         for (int j = 0; j <= resolutionTheta; j++) {
@@ -50,7 +50,7 @@ void Object::generateSphere(std::vector<float>& vertices, int resolutionTheta, i
     }
 }
 
-void Object::draw(int resolutionTheta, int resolutionPhi) {
+void Object::draw(int resolutionTheta, int resolutionPhi) const {
     std::vector<float> vertices;
     generateSphere(vertices, resolutionTheta, resolutionPhi);
 
@@ -78,3 +78,4 @@ void Object::draw(int resolutionTheta, int resolutionPhi) {
     }
     glEnd();
 }
+

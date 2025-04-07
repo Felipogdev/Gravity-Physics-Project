@@ -1,9 +1,14 @@
-#include "window.h"
+#include <vector>
 #include <GLFW/glfw3.h>
+#include <GL/glu.h>
 #include <iostream>
-#include "classObject.h"
 #include <string>
+#include <vector>
+#include "window.hpp"
+#include "classPhysics.hpp"
+#include "classObject.hpp"
 
+Physics physics(6.67430e-11, 1e-10);
 
 Window::Window(std::string name, int width, int height, std::string backgroundPath)
     : name(name), width(width), height(height), backgroundPath(backgroundPath) {}
@@ -14,12 +19,12 @@ int Window::getHeight() const { return height; }
 std::string Window::getBackgroundPath() const { return backgroundPath; }
 
 // Setters
-void Window::setName(const std::string title) { this->name = title; }
+void Window::setName( std::string title) { this->name = title; }
 void Window::setWidth(int width) { this->width = width; }
 void Window::setHeight(int height) { this->height = height; }
-void Window::setBackgroundPath(const std::string backgroundPath) { this->backgroundPath = backgroundPath; }
+void Window::setBackgroundPath( std::string backgroundPath) { this->backgroundPath = backgroundPath; }
 
-void Window::createWindow() {
+void Window::createWindow( std::vector<Object>& objects) {
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return;
@@ -39,15 +44,22 @@ void Window::createWindow() {
     // Matrix Setup
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-1, 1, -1, 1, -1, 1);
+    //fovY, aspect, zNear, zFar
+    gluPerspective(100.0f, (float)this->width / (float)this->height, 0.1f, 100.0f);
+    glTranslatef(0.0f, 0.0f, -5.0f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-   Object earth("earth", 5.972e24, 0.4f, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f}, "");
+
+
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        physics.simulate(objects);
 
-        earth.draw();
+        for(auto& object : objects) {
+            object.draw();
+        }
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -56,4 +68,5 @@ void Window::createWindow() {
     glfwDestroyWindow(window);
     glfwTerminate();
 }
+
 

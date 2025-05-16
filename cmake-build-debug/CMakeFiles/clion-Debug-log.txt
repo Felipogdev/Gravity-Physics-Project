@@ -1,5 +1,5 @@
-/home/felipog/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/felipog/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/felipog/Documents/PhysicsProject -B /home/felipog/Documents/PhysicsProject/cmake-build-debug
--- The CXX compiler identification is GNU 14.2.1
+/home/felipog/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /home/felipog/Documents/Gravity-Physics-Project -B /home/felipog/Documents/Gravity-Physics-Project/cmake-build-debug
+-- The CXX compiler identification is GNU 15.1.1
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Check for working CXX compiler: /usr/bin/c++ - skipped

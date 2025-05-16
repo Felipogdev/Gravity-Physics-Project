@@ -162,10 +162,10 @@ void Physics::keepObjectInBounds(Object& object) {
     const double farPlane = 100.0f;  // Far clipping plane (from gluPerspective)
 
     // Assume the screen width and height determine the left/right/top/bottom boundaries
-    const double leftBound = -4.0f;  // Adjust this based on your scene scale
-    const double rightBound = 4.0f;  // Adjust this based on your scene scale
-    const double topBound = 4.0f;    
-    const double bottomBound = -4.0f; // Adjust this based on your scene scale
+    const double leftBound = -6.0f;  // Adjust this based on your scene scale
+    const double rightBound = 6.0f;  // Adjust this based on your scene scale
+    const double topBound = 6.0f;
+    const double bottomBound = -6.0f; // Adjust this based on your scene scale
 
     for (int i = 0; i < 3; ++i) {
         if (position[i] - radius < leftBound) {

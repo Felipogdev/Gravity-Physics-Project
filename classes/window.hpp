@@ -22,12 +22,12 @@ public:
   std::string getBackgroundPath() const;
 
   // Setters
-  void setName(const std::string title);
+  void setName( std::string title);
   void setWidth(int width);
   void setHeight(int height);
-  void setBackgroundPath(const std::string backgroundPath);
+  void setBackgroundPath(std::string backgroundPath);
 
-  void createWindow(const std::vector<Object>& objects);
+  void createWindow(std::vector<Object>& objects);
 
 
 };

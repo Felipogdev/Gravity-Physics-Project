@@ -11,20 +11,22 @@
 Physics physics(6.67430e-11, 7e-10);
 
 Window::Window(std::string name, int width, int height, std::string backgroundPath)
-    : name(name), width(width), height(height), backgroundPath(backgroundPath) {}
+    : name(name), width(width), height(height), backgroundPath(backgroundPath), grid(20, 0.5f, {0.5f, 0.5f, 0.5f, 1.0f}) {}
+
 // Getters
 std::string Window::getName() const { return name; }
 int Window::getWidth() const { return width; }
 int Window::getHeight() const { return height; }
 std::string Window::getBackgroundPath() const { return backgroundPath; }
+Grid& Window::getGrid() { return grid; }
 
 // Setters
-void Window::setName( std::string title) { this->name = title; }
+void Window::setName(std::string title) { this->name = title; }
 void Window::setWidth(int width) { this->width = width; }
 void Window::setHeight(int height) { this->height = height; }
-void Window::setBackgroundPath( std::string backgroundPath) { this->backgroundPath = backgroundPath; }
+void Window::setBackgroundPath(std::string backgroundPath) { this->backgroundPath = backgroundPath; }
 
-void Window::createWindow( std::vector<Object>& objects) {
+void Window::createWindow(std::vector<Object>& objects) {
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return;
@@ -50,16 +52,20 @@ void Window::createWindow( std::vector<Object>& objects) {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
-
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        // Update physics and grid
         physics.simulate(objects);
+        grid.update(objects, physics.getDeltaTime());
 
+        // Draw grid first (background)
+        grid.draw();
+
+        // Draw objects
         for(auto& object : objects) {
             object.draw();
         }
-
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -67,6 +73,4 @@ void Window::createWindow( std::vector<Object>& objects) {
 
     glfwDestroyWindow(window);
     glfwTerminate();
-}
-
-
+} 

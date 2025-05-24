@@ -43,6 +43,8 @@ public:
     // Methods
     void generateSphere(std::vector<float>& vertices, int resolutionTheta, int resolutionPhi) const;
     void draw(int resolutionTheta = 100, int resolutionPhi = 100) const;
+    void renderTexture() const;
+
 };
 
 #endif

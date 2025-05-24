@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include "classObject.hpp"
+#include "classGrid.hpp"
 #include <vector>
 #include <string>
 
@@ -11,6 +12,7 @@ private:
   int width;
   int height;
   std::string backgroundPath;
+  Grid grid;
 
 public:
   Window(std::string name, int width, int height, std::string backgroundPath = "");
@@ -20,16 +22,15 @@ public:
   int getWidth() const;
   int getHeight() const;
   std::string getBackgroundPath() const;
+  Grid& getGrid();
 
   // Setters
-  void setName( std::string title);
+  void setName(std::string title);
   void setWidth(int width);
   void setHeight(int height);
   void setBackgroundPath(std::string backgroundPath);
 
   void createWindow(std::vector<Object>& objects);
-
-
 };
 
 #endif

@@ -10,13 +10,14 @@ class Grid {
 private:
     int gridSize;  // Number of cells in each dimension
     float cellSize;  // Size of each cell
+    std::array<float, 4> color;  // Grid color
     std::vector<std::vector<std::array<float, 3>>> vertices;  // Grid vertices
     std::vector<std::vector<std::array<float, 3>>> velocities;  // Velocity of each vertex
     std::vector<std::vector<float>> masses;  // Mass of each vertex
-    std::array<float, 4> color;  // Grid color
+    unsigned int VAO, VBO;  // OpenGL objects
 
 public:
-    Grid(int gridSize = 20, float cellSize = 0.5f, std::array<float, 4> color = {0.5f, 0.5f, 0.5f, 1.0f});
+    Grid(int gridSize = 30, float cellSize = 0.5f, std::array<float, 4> color = {0.5f, 0.5f, 0.5f, 1.0f});
     
     // Getters
     int getGridSize() const;

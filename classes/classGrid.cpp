@@ -39,10 +39,11 @@ void Grid::initialize() {
     for (int i = 0; i <= gridSize; ++i) {
         for (int j = 0; j <= gridSize; ++j) {
             vertices[i][j] = {
-                startX + i * cellSize,
-                0.0f,  // Y position at 0
-                startZ + j * cellSize - 10.0f  // Move grid back in z-axis
-            };
+    startX + i * cellSize,   // X
+    startZ + j * cellSize,   // Y (instead of Z)
+    0.0f                     // Z is constant now
+};
+
             velocities[i][j] = {0.0f, 0.0f, 0.0f};
         }
     }
@@ -113,12 +114,12 @@ void Grid::applyGravity(const Object& object, double deltaTime) {
 void Grid::draw() const {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glLineWidth(1.0f);  // Thinner lines for background grid
+    glLineWidth(1.0f);
     
     // Draw main grid lines with lower opacity
-    glColor4f(color[0], color[1], color[2], color[3] * 0.3f);  // Reduce opacity
+    glColor4f(color[0], color[1], color[2], color[3] * 0.3f);
     
-    // Draw horizontal lines
+    // Draw horizontal lines (along X axis)
     for (int i = 0; i <= gridSize; ++i) {
         glBegin(GL_LINE_STRIP);
         for (int j = 0; j <= gridSize; ++j) {
@@ -127,7 +128,7 @@ void Grid::draw() const {
         glEnd();
     }
 
-    // Draw vertical lines
+    // Draw vertical lines (along Z axis)
     for (int j = 0; j <= gridSize; ++j) {
         glBegin(GL_LINE_STRIP);
         for (int i = 0; i <= gridSize; ++i) {
@@ -137,8 +138,8 @@ void Grid::draw() const {
     }
     
     // Draw center lines with different color and higher opacity
-    glColor4f(1.0f, 0.0f, 0.0f, 0.5f);  // Red color for center lines with medium opacity
-    glLineWidth(2.0f);  // Slightly thicker for center lines
+    glColor4f(1.0f, 0.0f, 0.0f, 0.5f);
+    glLineWidth(2.0f);
     
     // Draw center horizontal line
     glBegin(GL_LINE_STRIP);
@@ -154,6 +155,6 @@ void Grid::draw() const {
     }
     glEnd();
     
-    glLineWidth(1.0f);  // Reset line width
+    glLineWidth(1.0f);
     glDisable(GL_BLEND);
-} 
+}

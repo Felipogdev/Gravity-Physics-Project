@@ -1,6 +1,6 @@
 rm -rf screen
 
-g++ *.cpp classes/*.cpp -o screen src/glad.c -Iinclude -lglfw -lGL -lm -ldl -lGLU
+g++ *.cpp classes/*.cpp -o screen src/glad.c -Iinclude -lglfw -lGL -lm -ldl -lGLU -lGLEW
 
 sleep 1
 ./screen
